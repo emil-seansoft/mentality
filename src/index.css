@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: black;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* styles.css */
+.btn-gold {
+  background-color: white; /* Gold color */
+  color: black; /* Text color */
+  border: none; /* Remove default border */
+}
+
+.btn-gold:hover {
+  background-color: #FFC300; /* Darker gold for hover effect */
+  color: white; /* Ensure text color remains white on hover */
+}
+
+.link-style {
+  text-decoration: none; /* Remove underline */
+  color: white; /* Ensure the text color is white */
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center items vertically */
+}
+
+.link-style:hover {
+  color: #FFAA00; /* Optional: change color on hover */
+}
+
+.icon {
+  font-size: 2rem; /* Adjust the size of the icons as needed */
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.mentality-img {
+  width: 700px;
+  height: 700px;
+  border-color: gold !important; /* Set border color to gold */
+  border-style: solid; /* Apply border style */
+  border-width: 2px; /* Adjust border width as needed */
+}
+
+.mentality-logo {
+  width: 80px; /* Ensure the width is 50px */
+  height: 80px; /* Ensure the height is 50px */
+  background-color: white; /* White background */
+  padding: 5px; /* Optional: Adds some padding around the logo */
+  border-radius: 50%; /* Makes the logo circular */
+  border: 2px solid gold; /* Gold border */
+}
+
+.border-mentality {
+  border-color: gold !important; /* Set border color to gold */
+  border-style: solid; /* Apply border style */
+  border-width: 2px; /* Adjust border width as needed */
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+}
+
+.sticky-top {
+  position: sticky;
+  top: 0; /* Sticks the header to the top */
+  z-index: 1000; /* Ensures the header is above other content */
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0; /* Sticks the header to the top */
+  width: 100%; /* Ensures the header spans the full width */
+  z-index: 1000; /* Ensures the header is above other content */
+}
+
+.russo-one-regular {
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
