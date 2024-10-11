@@ -1,19 +1,33 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import pop from './images/logo.jpg'
-import logo from './images/logo.png'
-import wolf from './images/wolf.jpg'
-import bb from './images/bb.jpg'
+import pop from './images/logo.jpg';
+import logo from './images/logo.png';
+import wolf from './images/wolf.jpg';
+import bb from './images/bb.jpg';
+import SocialLinksAccordion from './accordion.js';
+import mentalityIcon from './images/logo.png';
 
 function App() {
   const headingRef = useRef(null);
-  const contentRef = useRef(null); // Ref for the content to animate
-  const [showContent, setShowContent] = useState(false); // State to control content visibility
-  const buySectionRef = useRef(null); // Ref for the "HOW TO BUY" section
+  const contentRef = useRef(null);
+  const [showContent, setShowContent] = useState(false);
+  const buySectionRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // Assume mobile if width is less than 768px
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const introText = (
-    <h1 
-      ref={headingRef} 
+    <h1
+      ref={headingRef}
       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[10vw] font-bold russo-one-regular select-none"
     >
       MENTALITY
@@ -24,7 +38,7 @@ function App() {
     buySectionRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const textToCopy = 'EJ6r55VaTxKwaPTBWU6naLsUoSnBJ59Q3jZtE5wrpump'
+  const textToCopy = 'EJ6r55VaTxKwaPTBWU6naLsUoSnBJ59Q3jZtE5wrpump';
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(textToCopy)
@@ -39,57 +53,81 @@ function App() {
 
   const Header = (
     <>
-      <div className='w-100 fixed-top p-3 bg-black row gap-3' style={{ border: '1px solid #333333'}}>
-        <p className='text-gold select-none col-3'>{`MENTALITY`}</p>
-
-        <div className='col-6 d-flex justify-content-center gap-10 row'>
-        <a href="https://dexscreener.com/solana/9ymen6enbr3zd4rtvmocbnvck5ltkh8yn2zdxj17jwtw" target="_blank" rel="noopener noreferrer" className="link-style">
-            <i className="bi bi-bar-chart icon"></i> 
-            <p className='text-white mb-0'>Chart</p>
-        </a>
-        <a href="https://t.me/+YD9ox3ckONQ3M2Vl" target="_blank" rel="noopener noreferrer" className="link-style">
-            <i className="bi bi-telegram icon"></i> 
-            <p className='text-white mb-0'>Telegram</p>
-        </a>
-        <a href="https://x.com/mentalitysolana/" target="_blank" rel="noopener noreferrer" className="link-style">
-            <i className="bi bi-twitter icon"></i> 
-            <p className='text-white mb-0'>Twitter</p>
-        </a>
-        </div>
-
+      <div className='w-100 fixed-top p-3 bg-black row align-items-center' style={{ border: '1px solid #333333' }}>
+        {isMobile ? (
+          <img src={mentalityIcon} alt="Mentality Icon" className="icon" style={{ width: '40px', height: 'auto' }} />
+        ) : (
+          <p className='text-gold select-none col-3'>{`MENTALITY`}</p>
+        )}
+        
+        {isMobile ? (
+          <SocialLinksAccordion />
+        ) : (
+          <div className='col-6 d-flex justify-content-center gap-10 row'>
+            <>
+              <a href="https://dexscreener.com/solana/9ymen6enbr3zd4rtvmocbnvck5ltkh8yn2zdxj17jwtw" target="_blank" rel="noopener noreferrer" className="link-style">
+                <i className="bi bi-bar-chart icon"></i>
+                <p className='text-white mb-0'>Chart</p>
+              </a>
+              <a href="https://t.me/+YD9ox3ckONQ3M2Vl" target="_blank" rel="noopener noreferrer" className="link-style">
+                <i className="bi bi-telegram icon"></i>
+                <p className='text-white mb-0'>Telegram</p>
+              </a>
+              <a href="https://x.com/mentalitysolana/" target="_blank" rel="noopener noreferrer" className="link-style">
+                <i className="bi bi-twitter icon"></i>
+                <p className='text-white mb-0'>Twitter</p>
+              </a>
+            </>
+          </div>
+        )}
+  
         <div className='col-2'>
-            <button 
-                className='btn btn-gold mt-3'
-                type='button'
-                onClick={scrollToBuySection}
-              >
-                BUY $MENTALITY
-            </button>
+          <button
+            className='btn btn-gold'
+            type='button'
+            onClick={scrollToBuySection}
+          >
+            BUY $MENTALITY
+          </button>
         </div>
       </div>
-
     </>
   );
+  
 
   const footer = (
-    <div className='w-100 p-3 row' style={{ backgroundColor: '#333333'}}>
-      <p className='text-gold col-6 select-none'>{`MENTALITY`}</p>
-
+    <div className='w-100 p-3 row justify-content-around' style={{ backgroundColor: '#333333' }}>
+      {isMobile ? (
+        <img 
+          src={mentalityIcon} 
+          alt="Mentality Icon" 
+          className="icon" 
+          style={{ width: '40px', height: 'auto', maxWidth: '100%', objectFit: 'contain' }} 
+        />
+      ) : (
+        <p className='text-gold col-6 select-none'>{`MENTALITY`}</p>
+      )}
+  
       <div className='col-6 d-flex justify-content-center gap-10 row'>
-          <a href="https://dexscreener.com/solana/9ymen6enbr3zd4rtvmocbnvck5ltkh8yn2zdxj17jwtw" target="_blank" rel="noopener noreferrer" className="link-style">
-                <i className="bi bi-bar-chart icon"></i> 
-                <p className='text-white mb-0'>Chart</p>
+        {isMobile ? (
+          <SocialLinksAccordion />
+        ) : (
+          <>
+            <a href="https://dexscreener.com/solana/9ymen6enbr3zd4rtvmocbnvck5ltkh8yn2zdxj17jwtw" target="_blank" rel="noopener noreferrer" className="link-style">
+              <i className="bi bi-bar-chart icon"></i>
+              <p className='text-white mb-0'>Chart</p>
             </a>
             <a href="https://t.me/+YD9ox3ckONQ3M2Vl" target="_blank" rel="noopener noreferrer" className="link-style">
-                <i className="bi bi-telegram icon"></i> 
-                <p className='text-white mb-0'>Telegram</p>
+              <i className="bi bi-telegram icon"></i>
+              <p className='text-white mb-0'>Telegram</p>
             </a>
             <a href="https://x.com/mentalitysolana/" target="_blank" rel="noopener noreferrer" className="link-style">
-                <i className="bi bi-twitter icon"></i> 
-                <p className='text-white mb-0'>Twitter</p>
+              <i className="bi bi-twitter icon"></i>
+              <p className='text-white mb-0'>Twitter</p>
             </a>
-        </div>
-
+          </>
+        )}
+      </div>
     </div>
   );
 
@@ -198,7 +236,7 @@ function App() {
         <div>
           <div className='row align-items-center h-screen mt-3'> {/* Added h-screen to the row */}
             <div className='col-md-6 col-12 text-center'>
-              <p className='text-6xl text-white'>
+              <p className='text-4xl text-white'>
                 <h1>TOKENOMICS</h1>
               </p>
               <div className='text-2xl text-white'>
