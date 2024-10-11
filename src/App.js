@@ -164,10 +164,10 @@ function App() {
       });
     };
   
-    window.addEventListener('load', runAnimation);
+    window.addEventListener('load', runAnimation());
   
     return () => {
-      window.removeEventListener('load', runAnimation); // Clean up event listener
+      window.removeEventListener('load', runAnimation()); // Clean up event listener
     };
   }, []);
 
