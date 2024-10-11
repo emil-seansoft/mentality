@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 body {
+  -webkit-text-size-adjust: 100%; /* For Safari and older Android browsers */
+  text-size-adjust: 100%; /* For Chrome 54+, Edge 79+, and modern browsers */
+}
+
+body {
   background-color: black;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
