@@ -259,6 +259,8 @@ function App() {
                   width="800" 
                   height="360" 
                   className="my-3" // Add any additional styles you want
+                  autoPlay
+                  muted
                 >
                   <source src={myVideo} type="video/mp4" />
                   Your browser does not support the video tag.
