@@ -6,6 +6,7 @@ import wolf from './images/wolf.jpg';
 import bb from './images/bb.jpg';
 import SocialLinksAccordion from './accordion.js';
 import mentalityIcon from './images/logo.png';
+import myVideo from './images/mentality.MOV'
 
 function App() {
   const headingRef = useRef(null);
@@ -250,6 +251,19 @@ function App() {
               <img src={bb} alt='lion' className='img-fluid border-mentality' /> {/* Add img-fluid for responsiveness */}
             </div>
           </div>
+
+              {/* Embed Video */}
+              <div className='d-flex justify-content-center'>
+                <video 
+                  controls 
+                  width="800" 
+                  height="360" 
+                  className="my-3" // Add any additional styles you want
+                >
+                  <source src={myVideo} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
 
           <div ref={buySectionRef} className='row align-items-center h-screen'> {/* Added ref for scrolling */}
                 <div className='col-12 text-center'>
